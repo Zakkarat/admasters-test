@@ -6,10 +6,9 @@ import Button from "react-bootstrap/Button";
 const TableRow = ({ item, add, minus, deleteItem }) => {
   const [counter, setCounter] = useState(item.counter);
   const handleClick = ({ target }) => {
-    console.log("ya zdes dva raza bul");
     if (target.innerText === "+") {
       add(item.id);
-    } else if (item.counter > 0) {
+    } else if (item.counter > 1) {
       minus(item.id);
     }
     setCounter(item.counter);
@@ -17,10 +16,11 @@ const TableRow = ({ item, add, minus, deleteItem }) => {
 
   const handleDelete = () => {
     deleteItem(item.id);
-  }
+  };
   return (
     <tr>
       <td>{item.title}</td>
+      <td>{item.price}</td>
       <td>
         <Button variant="light" onClick={handleClick}>
           +

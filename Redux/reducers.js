@@ -34,24 +34,23 @@ const storage = (state = intialState, action) => {
           }
         })
       };
-      case MINUS:
-            return {
-            counter: ++state.counter,
-              items: state.items.map(item => {
-                if (item.id === action.payload) {
-                  --item.counter;
-                  return item;
-                } else {
-                    
-                  return item;
-                }
-              })
-            };
-        case DELETE_ITEM: 
-            return {
-                counter: --state.counter,
-                items: state.items.filter(item => item.id !== action.payload)
-            }
+    case MINUS:
+      return {
+        counter: --state.counter,
+        items: state.items.map(item => {
+          if (item.id === action.payload) {
+            --item.counter;
+            return item;
+          } else {
+            return item;
+          }
+        })
+      };
+    case DELETE_ITEM:
+      return {
+        counter: --state.counter,
+        items: state.items.filter(item => item.id !== action.payload)
+      };
     default:
       return state;
   }

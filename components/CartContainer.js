@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { CartStyles } from "../static/stylesheets/style-components";
 
 import TableRow from "../components/TableRow";
 
-const CartContainer = ({ items}) => {
-
+const CartContainer = ({ items }) => {
+  const [overall, setOverall] = useState(0);
+  useEffect(() => {
+    const allValues = items.map(item => item.price * item.counter);
+    setOverall(
+      allValues.length !== 0 ? allValues.reduce((acc, item) => acc + item) : 0
+    );
+  });
   return (
     <CartStyles>
       <h3>Your cart:</h3>
-      <Table responsive>
+      <Table borderless responsive>
         <thead>
           <tr>
             <th>Product</th>
+            <th>Price</th>
             <th>Quantity</th>
           </tr>
         </thead>
@@ -22,11 +29,20 @@ const CartContainer = ({ items}) => {
           {items.map(item => (
             <TableRow key={item.id} item={item} />
           ))}
+          <tr>
+            <td>
+              <h3>Overall: {overall}</h3>
+            </td>
+            <td />
+            <td />
+            <td>
+              <Button size="lg" variant="success" disabled={overall === 0}>
+                Confirm
+              </Button>
+            </td>
+          </tr>
         </tbody>
       </Table>
-      {/* <Card>
-        {items.map(item => <Card key={item.id} className="no-border-radius"><Card.Header>{item.title}</Card.Header><Card.Body></Card.Body></Card>)}
-      </Card> */}
     </CartStyles>
   );
 };
