@@ -6,9 +6,9 @@ import {addToCart} from "../Redux/actions"
 
 const ProductItem = ({title, description, price, id, addToCart}) => {
   const handleClick = () => {
-    addToCart({
+    addToCart({item: {
       title, description, price, id
-    })
+    }})
   }
 
   return (

@@ -20,4 +20,10 @@ const CardsStyles = styled.div`
     }
 `
 
-export {NavStyles, CardsStyles};
+const CartStyles = styled.div`
+    .no-border-radius {
+        border-radius: 0;
+    }
+`
+
+export {NavStyles, CardsStyles, CartStyles};

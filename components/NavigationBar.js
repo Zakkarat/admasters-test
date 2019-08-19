@@ -1,4 +1,6 @@
 import React from "react";
+import { useRouter } from "next/router";
+import Link from "next/link"
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -7,25 +9,36 @@ import { NavStyles } from "../static/stylesheets/style-components.js";
 import "../static/stylesheets/navbar.css";
 import { connect } from "react-redux";
 
-const NavigationBar = ({counter}) => {
-  console.log(counter)
+const NavigationBar = ({ counter }) => {
+  const router = useRouter();
   return (
     <NavStyles>
       <Navbar className="border-underlined" bg="light" expand="md">
         <Container>
           <Navbar.Brand className="bigger-brand">Vegetables</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-          <Nav>
-            <Nav.Item className="mt-2">
-              <h3>Items in cart: {counter}</h3>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link>
-                <Button variant="success">Confirm</Button>
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <Navbar.Collapse
+            className="justify-content-end"
+            id="responsive-navbar-nav"
+          >
+            <Nav>
+              {router.asPath === "/" ? (
+                <>
+                  <Nav.Item className="mt-2">
+                    <h3>Items in cart: {counter}</h3>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link>
+                      <Link href="/confirm"><Button variant="success">Confirm</Button></Link>
+                    </Nav.Link>
+                  </Nav.Item>
+                </>
+              ) : (
+                <Nav.Link>
+                  <Link href="/"><Button variant="dark">Go Back</Button></Link>
+                </Nav.Link>
+              )}
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -33,8 +46,10 @@ const NavigationBar = ({counter}) => {
   );
 };
 
-const mapStateToProps = state => ({
-  counter: state.counter
-})
+const mapStateToProps = state => {
+  return {
+    counter: state.storage.counter
+  };
+};
 
 export default connect(mapStateToProps)(NavigationBar);
