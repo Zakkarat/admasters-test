@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const NavStyles = styled.div`
+const NavStyles = styled.div`
     .bigger-brand {
         font-size: 2.5rem;
     }
@@ -13,3 +13,11 @@ export const NavStyles = styled.div`
  box-shadow:0px 6px 6px #d8d8d8;
     }
 `
+
+const CardsStyles = styled.div`
+    .space-between-top {
+        margin-top: 50px;
+    }
+`
+
+export {NavStyles, CardsStyles};
