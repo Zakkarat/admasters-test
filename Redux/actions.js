@@ -19,6 +19,6 @@ export const minus = (id) => ({
 })
 
 export const deleteItem = (id) => ({
-  type: DELETE, 
+  type: DELETE_ITEM, 
   payload: id
 })

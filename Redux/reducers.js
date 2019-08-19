@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { combineReducers } from "redux";
 import { ADD_TO_CART, ADD, MINUS, DELETE_ITEM } from "./actions";
 
@@ -50,7 +49,8 @@ const storage = (state = intialState, action) => {
             };
         case DELETE_ITEM: 
             return {
-
+                counter: --state.counter,
+                items: state.items.filter(item => item.id !== action.payload)
             }
     default:
       return state;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { add, minus } from "../Redux/actions";
+import { add, minus, deleteItem } from "../Redux/actions";
 import Button from "react-bootstrap/Button";
 
-const TableRow = ({ item, add, minus }) => {
+const TableRow = ({ item, add, minus, deleteItem }) => {
   const [counter, setCounter] = useState(item.counter);
   const handleClick = ({ target }) => {
     console.log("ya zdes dva raza bul");
@@ -15,6 +15,9 @@ const TableRow = ({ item, add, minus }) => {
     setCounter(item.counter);
   };
 
+  const handleDelete = () => {
+    deleteItem(item.id);
+  }
   return (
     <tr>
       <td>{item.title}</td>
@@ -38,7 +41,8 @@ const TableRow = ({ item, add, minus }) => {
 
 const mapDispatchToProps = {
   add,
-  minus
+  minus,
+  deleteItem
 };
 
 export default connect(
