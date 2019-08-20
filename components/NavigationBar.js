@@ -14,7 +14,7 @@ const NavigationBar = ({ counter }) => {
     <NavStyles>
       <Navbar className="border-underlined" bg="light" expand="md">
         <Container>
-          <Navbar.Brand className="bigger-brand">Vegetables</Navbar.Brand>
+          <Navbar.Brand className="bigger-brand">Products</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse
             className="justify-content-end"
@@ -29,8 +29,8 @@ const NavigationBar = ({ counter }) => {
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link>
-                        <Link href="/confirm">
-                          <Button variant="success">Proceed</Button>
+                        <Link href="/Confirm">
+                          <Button variant="primary">Proceed</Button>
                         </Link>
                       </Nav.Link>
                     </Nav.Item>

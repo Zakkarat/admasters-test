@@ -47,8 +47,9 @@ const storage = (state = intialState, action) => {
         })
       };
     case DELETE_ITEM:
+      const deleted = state.items.filter(item => item.id === action.payload);
       return {
-        counter: --state.counter,
+        counter: state.counter - deleted[0].counter,
         items: state.items.filter(item => item.id !== action.payload)
       };
     default:
