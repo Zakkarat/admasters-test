@@ -5,6 +5,7 @@ import Table from "react-bootstrap/Table";
 import { CartStyles } from "../static/stylesheets/style-components";
 
 import TableRow from "../components/TableRow";
+import Container from "react-bootstrap/Container";
 
 const CartContainer = ({ items }) => {
   const [overall, setOverall] = useState(0);
@@ -14,9 +15,14 @@ const CartContainer = ({ items }) => {
       allValues.length !== 0 ? allValues.reduce((acc, item) => acc + item) : 0
     );
   });
+
+  const handleSubmit = (e) => {
+    console.log(e)
+  }
   return (
     <CartStyles>
-      <h3>Your cart:</h3>
+      <Container className="mt-3">
+      <h3 >Your cart:</h3>
       <Table borderless responsive>
         <thead>
           <tr>
@@ -36,13 +42,14 @@ const CartContainer = ({ items }) => {
             <td />
             <td />
             <td>
-              <Button size="lg" variant="success" disabled={overall === 0}>
-                Confirm
+              <Button type='submit' size="lg" variant="success" disabled={overall === 0}>
+                Submit
               </Button>
             </td>
           </tr>
         </tbody>
       </Table>
+      </Container>
     </CartStyles>
   );
 };

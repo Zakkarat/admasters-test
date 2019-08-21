@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { addToCart } from "../Redux/actions";
 
-const ProductItem = ({ title, description, price, id, addToCart }) => {
+const ProductItem = ({ title, description, price, id, image, addToCart }) => {
   const handleClick = () => {
     addToCart({
       item: {
@@ -21,7 +21,7 @@ const ProductItem = ({ title, description, price, id, addToCart }) => {
       <Card.Img
         variant="top"
         height={250}
-        src="../static/images/image-holder-cropped.jpg"
+        src={image}
       />
       <Card.Body>
         <Card.Title>{title}</Card.Title>

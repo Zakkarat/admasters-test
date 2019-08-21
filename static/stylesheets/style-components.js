@@ -26,4 +26,6 @@ const CartStyles = styled.div`
   }
 `;
 
+
+
 export { NavStyles, CardsStyles, CartStyles };
